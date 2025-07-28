@@ -19,6 +19,7 @@ config :piruet, Piruet.Repo,
 # Binding to loopback ipv4 address prevents access from other machines.
 config :piruet, PiruetWeb.Endpoint,
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
+  url: [host: "piruetik-music.com", port: 4000, http: "http://"],
   http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
   code_reloader: true,
