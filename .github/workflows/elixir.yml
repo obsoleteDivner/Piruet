@@ -46,4 +46,3 @@ jobs:
           deps/
           mix.lock
         retention-days: 1
-
