@@ -57,13 +57,13 @@ jobs:
         postgres:
           image: postgres:15
           env:
-            POSTGRES_USER: apex
-            POSTGRES_PASSWORD: apex
-            POSTGRES_DB: apex_erp_test
+            POSTGRES_USER: piruet
+            POSTGRES_PASSWORD: piruet
+            POSTGRES_DB: piruet_test
           ports:
             - 5432:5432
           options: >-
-            --health-cmd "pg_isready -U apex -d apex_erp_test"
+            --health-cmd "pg_isready -U piruet -d piruet_test"
             --health-interval 5s
             --health-timeout 5s
             --health-retries 5
@@ -105,14 +105,14 @@ jobs:
 
       - name: Wait for PostgreSQL to be ready
         run: |
-          echo "Waiting for PostgreSQL to be ready on localhost:5432 for user apex..."
-          until pg_isready -h localhost -p 5432 -U apex -d apex_erp_test; do
+          echo "Waiting for PostgreSQL to be ready on localhost:5432 for user piruet..."
+          until pg_isready -h localhost -p 5432 -U piruet -d piruet_test; do
             echo "Still waiting..."
             sleep 2
           done
           echo "PostgreSQL is ready!"
         env:
-          PGPASSWORD: apex
+          PGPASSWORD: piruet
 
       - name: Drop, Create, and Migrate Test Database
         run: |
@@ -120,11 +120,11 @@ jobs:
           mix ecto.create
           mix ecto.migrate
         env:
-          DATABASE_URL: "ecto://apex:apex@localhost/apex_erp_test"
+          DATABASE_URL: "ecto://piruet:piruet@localhost/piruet_test"
           MIX_ENV: test
 
       - name: Run tests
         run: mix test
         env:
           MIX_ENV: test
-          DATABASE_URL: "ecto://apex:apex@localhost/apex_erp_test"
+          DATABASE_URL: "ecto://piruet:piruet@localhost/piruet_test"
