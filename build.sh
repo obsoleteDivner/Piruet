@@ -8,7 +8,6 @@ if ! command -v yt-dlp &> /dev/null; then
   export PATH=$HOME/.local/bin:$PATH
 fi
 
-# Далі твій звичайний build
 mix clean
 rm -rf _build
 mix deps.get --only prod
