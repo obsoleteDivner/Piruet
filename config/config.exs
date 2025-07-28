@@ -58,6 +58,7 @@ config :nostrum,
   token: "MTM5OTQyMDg5NzU5NjU0MzA3Ng.GL4c5O.bvZTu-W7W0i0iHdD3b5doshcgVvxaO0CQthlRA"
 
 
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
