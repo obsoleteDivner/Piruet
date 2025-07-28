@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -o errexit
-
+mix clean
+rm -rf _build
 mix deps.get --only prod
 MIX_ENV=prod mix compile
 
