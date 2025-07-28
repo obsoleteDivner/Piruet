@@ -54,10 +54,12 @@ config :tailwind,
   ]
 
 config :nostrum, 
-  youtubedl: "yt-dlp",
-  token: System.get_env("DISCORD_TOKEN")
-
-
+  youtubedl: "/usr/bin/yt-dlp",
+  ffmpeg: "/usr/bin/ffmpeg",
+  token:System.get_env("DISCORD_TOKEN"),
+  num_shards: :auto,
+  gateway_intents: [:guild_messages, :guilds, :guild_voice_states, :direct_messages],
+  dispatch_modules: [Piruet.Consumer]
 
 # Configures Elixir's Logger
 config :logger, :console,

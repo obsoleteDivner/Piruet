@@ -10,6 +10,7 @@ defmodule Piruet.Application do
     children = [
       PiruetWeb.Telemetry,
       Piruet.Repo,
+      Piruet.Consumer,
       {DNSCluster, query: Application.get_env(:piruet, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Piruet.PubSub},
       # Start the Finch HTTP client for sending emails
