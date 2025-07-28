@@ -58,6 +58,7 @@ config :nostrum,
   token: System.get_env("DISCORD_TOKEN")
 
 
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
