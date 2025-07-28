@@ -24,7 +24,8 @@ config :piruet, PiruetWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "kjWlimRcpEuCY1mJ6Hi6ucbjOmlO5HRP9vdVB8ysyvq4ipKVHUKI9kU/mToUN8Vw",
+  
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:piruet, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:piruet, ~w(--watch)]}

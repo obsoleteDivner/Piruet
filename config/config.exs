@@ -55,7 +55,7 @@ config :tailwind,
 
 config :nostrum, 
   youtubedl: "yt-dlp",
-  token: "MTM5OTQyMDg5NzU5NjU0MzA3Ng.GL4c5O.bvZTu-W7W0i0iHdD3b5doshcgVvxaO0CQthlRA"
+  token: System.get_env("DISCORD_TOKEN")
 
 
 # Configures Elixir's Logger
