@@ -33,6 +33,7 @@ defmodule Piruet.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7.20"},
+      {:oauth2, "~> 2.0"},
       {:nostrum, "~> 0.10.4"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},

@@ -16,7 +16,7 @@ defmodule PiruetWeb.Router do
 
   scope "/", PiruetWeb do
     pipe_through :browser
-
+   get "/callback", AuthController, :callback
    live "/", DashboardLive
   end
 

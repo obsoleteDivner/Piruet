@@ -9,7 +9,10 @@ import Config
 
 config :piruet,
   ecto_repos: [Piruet.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  client_id: "1399420897596543076",
+  client_secret: "Xvj7T8AHWpVBkM4IZC-2acj-1xEG425t",
+  redirect_uri: "http://piruetik-music.com:4000/callback"
 
 # Configures the endpoint
 config :piruet, PiruetWeb.Endpoint,
