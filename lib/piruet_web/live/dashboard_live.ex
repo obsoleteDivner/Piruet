@@ -11,14 +11,6 @@ defmodule PiruetWeb.DashboardLive do
             <input name="url" type="text" value={@url} placeholder="Введіть URL треку"/>
             <button type="submit">Додати в чергу</button>
           </form>
-      
-          <ul>
-            <%= for track <- @tracks do %>
-              <li id={"track-#{track.id}"}>
-                <%= track.url %> — <%= track.status %>
-              </li>
-            <% end %>
-          </ul>
         </div>
         """
       end
@@ -26,8 +18,7 @@ defmodule PiruetWeb.DashboardLive do
       
     def mount(_params, _session, socket) do
       if connected?(socket), do: Phoenix.PubSub.subscribe(Piruet.PubSub, "tracks")
-      tracks = Music.list_track()
-      {:ok, assign(socket, tracks: tracks, url: "")}
+      {:ok, assign(socket, url: "")}
     end
   
 
@@ -54,8 +45,6 @@ defmodule PiruetWeb.DashboardLive do
             :ok
         end
     end
-      def handle_info({:new_track, track}, socket) do
-        {:noreply, update(socket, :tracks, fn ts -> ts ++ [track] end)}
-      end
+
     end
     
