@@ -7,6 +7,12 @@ import Config
 # before starting your production server.
 config :piruet, PiruetWeb.Endpoint, cache_static_manifest: "priv/static/cache_manifest.json"
 
+config :piruet, PiruetWeb.Endpoint,
+  url: [host: "piruet.onrender.com", port: 443, scheme: "https"],
+  http: [port: 4000], # або інший порт, якщо треба
+  check_origin: ["//piruet.onrender.com", "https://piruet.onrender.com"],
+  server: true
+
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: Piruet.Finch
 
