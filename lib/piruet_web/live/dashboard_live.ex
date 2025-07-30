@@ -1,8 +1,6 @@
 defmodule PiruetWeb.DashboardLive do
   use PiruetWeb, :live_view
   alias Piruet.OAuth, as: POAUTH
-  alias Piruet.Music
-  alias Piruet.Music.Track
   alias Nostrum.Voice
 
   def render(assigns) do
@@ -24,7 +22,7 @@ defmodule PiruetWeb.DashboardLive do
 
   def mount(_params, _session, socket) do
     state = :crypto.strong_rand_bytes(16) |> Base.url_encode64()
-    client = POAUTH.client()
+    client = POAUTH.client() 
     auth_url = POAUTH.authorize_url(client, state)
 
     if connected?(socket), do: Phoenix.PubSub.subscribe(Piruet.PubSub, "tracks")
@@ -32,7 +30,7 @@ defmodule PiruetWeb.DashboardLive do
   end
 
   def handle_event("add_track", %{"url" => url}, socket) do
-    user_id = 599305172501528590
+    # user_id = 599305172501528590
     guild_id = 819656355396059206
     channel_id = 875801015838998528
 

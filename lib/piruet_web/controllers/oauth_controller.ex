@@ -6,10 +6,9 @@ defmodule PiruetWeb.AuthController do
     def callback(conn, %{"code" => code, "state" => _state}) do
       client = OAuth.client()
   
-      with {:ok, %OAuth2.Client{token: %{access_token: access_token_coded}} = full_client} <- OAuth.exchange_code_for_token(client, code),
+      with {:ok, %OAuth2.Client{token: %{access_token: access_token_coded}}} <- OAuth.exchange_code_for_token(client, code),
            {:ok, %{"access_token" => access_token}} <- JSON.decode(access_token_coded),
            {:ok, user_info} <- fetch_user_info(access_token) |> IO.inspect(label: "info")do
-        # Можна зберегти user_info в сесії або БД
         conn
         |> put_session(:discord_user, user_info)
         |> put_session(:access_token, access_token)
@@ -18,14 +17,14 @@ defmodule PiruetWeb.AuthController do
         error ->
             IO.inspect(error, label: "ERORR")
           conn
-          |> put_flash(:error, "Не вдалося авторизуватись через Discord.")
+          |> put_flash(:error, "Can't authorize with Discord.")
           |> redirect(to: "/")
       end
     end
   
     def callback(conn, _params) do
       conn
-      |> put_flash(:error, "Авторизація неуспішна.")
+      |> put_flash(:error, "Authorization succesful.")
       |> redirect(to: "/")
     end
   
