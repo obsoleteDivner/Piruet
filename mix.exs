@@ -34,7 +34,7 @@ defmodule Piruet.MixProject do
     [
       {:phoenix, "~> 1.7.20"},
       {:oauth2, "~> 2.0"},
-      {:nostrum, "~> 0.10.4"},
+      {:nostrum, git: "https://github.com/obsoleteDivner/nostrum.git", branch: "piruet"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 1.0.0"},
